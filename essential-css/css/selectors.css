@@ -45,6 +45,9 @@ a:hover, a:focus {
 footer {
 	background-color: #333;
 	color: #FFF;
+	border-top-color: #F00;
+	border-top-width: 5px;
+	border-top-style: solid;
 }
 
 footer a {
@@ -65,4 +68,9 @@ header {
 
 h1 {
 	margin-top: 0;
+}
+
+header, main, footer {
+	padding-left: 1em;
+	padding-right: 1em;
 }
