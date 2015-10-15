@@ -1,9 +1,16 @@
+/*
+color.adobe.com - magical color web app
+flaticon.com - free svg icons
+pixabay.com - free stock photos
+fontawesome.github.io - icons and stuff
+moment.js - time library
+bootstrap has 12 columns
+768 good marking point for mobile / tablet / desktop
+*/
+
 header {
-    background-image: url(../img/pencil-background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 600px;
     padding: 1.5em;
+    background-color: #C3BCC2;
 }
 
 header h1 {
@@ -14,4 +21,61 @@ header h1 {
 header p {
     font-size: 200%;
     font-weight: 300;
+}
+
+.bunny img {
+	float: left;
+	max-height: 200px;
+	margin-right: 1em;
+}
+
+.bunny aside {
+	font-size: 130%;
+	font-weight: 200;
+}
+
+footer {
+	background-color: #000;
+	color: #FFF;
+	position:fixed;
+    left:0px;
+    bottom:0px;
+    height:4em;
+    width:100%;
+    padding-bottom: 0;
+}
+
+footer li {
+	display: inline-block;
+	padding-left: 2em;
+	padding-top: 1.5em;
+}
+
+footer a {
+	color: #FFF;
+}
+
+footer a:hover {
+	text-decoration: none;
+}
+
+footer ul {
+	margin: 0;
+}
+
+footer ul div {
+	display: inline-block;
+}
+
+footer ul div:hover {
+	background-color: #777;
+}
+
+@media(min-width: 768px) {
+	header {
+		background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)), url(../img/pencil-background.jpg);
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    min-height: 600px;
+	}
 }
