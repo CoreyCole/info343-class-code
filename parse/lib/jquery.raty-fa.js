@@ -201,7 +201,7 @@
 
         icon = this.opt[icon];
 
-        $('<i />', { 'class' : icon, title: title, 'data-score': i }).appendTo(this);
+        $('<i />', { class : icon, title: title, 'data-score': i }).appendTo(this);
 
         if (this.opt.space) {
           that.append((i < this.opt.number) ? '&#160;' : '');

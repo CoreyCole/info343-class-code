@@ -36,19 +36,11 @@ $(function() {
     }
 
     function showSpinner() {
-        $('.fa-spinner').show();
+        $('.fa-spin').show();
     }
 
     function hideSpinner() {
-        $('.fa-spinner').hide();
-    }
-
-
-    function fetchTasks() {
-        showSpinner();
-        tasksQuery.find()
-            .then(onData, displayError)
-            .always(hideSpinner);
+        $('.fa-spin').hide();
     }
 
     function onData(results) {

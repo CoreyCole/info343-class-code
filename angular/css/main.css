@@ -12,3 +12,7 @@ body {
 ul li {
     cursor: pointer;
 }
+
+.back-to-list {
+    margin-top: 1.5em;
+}
