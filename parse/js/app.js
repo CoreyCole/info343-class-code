@@ -12,6 +12,8 @@ $(function() {
     //new query that will return all tasks ordered by createAt
     var tasksQuery = new Parse.Query(Task);
     tasksQuery.ascending('createdAt');
+    //like a sql where clause
+    tasksQuery.notEqualTo('done', true);
 
     //reference to the task list element
     var tasksList = $('#tasks-list');
@@ -54,13 +56,35 @@ $(function() {
         renderTasks();
     }
 
+    //this in a then function refers to the html element
     function renderTasks() {
         tasksList.empty();
         tasks.forEach(function(task) {
-            $(document.createElement('li'))
+            var li = $(document.createElement('li'))
                 .text(task.get('title'))
-                .appendTo(tasksList);
+                .addClass(task.get('done') ? 'completed-task' : '')
+                .appendTo(tasksList)
+                .click(function() {
+                    task.set('done', !task.get('done'));
+                    task.save().then(renderTasks, displayError);
+                });
+
+            $(document.createElement('span'))
+                .raty({
+                    readOnly: true,
+                    score: (task.get('rating') || 1), //if it returns a falsy, default to 1
+                    hints: ['crap', 'awful', 'ok', 'nice', 'awesome']
+                })
+                .appendTo(li);
         });
+    }
+
+    //wont actually use, shows power of truthy / falsy
+    //numbers by 0 or non zero
+    //empty string false, any other string true
+    function showMessage(message) {
+        message = message || 'Hello';
+        alert(message);
     }
 
     //when the user submits
@@ -73,8 +97,10 @@ $(function() {
         var title = titleInput.val();
         var task = new Task();
         task.set('title', title);
+        task.set('rating', $('#rating').raty('score'));
         task.save().then(fetchTasks, displayError).then(function() {
             titleInput.val('');
+            $('#rating').raty('set', {});
         });
 
         //same as prevent default but works in other browsers
@@ -88,6 +114,9 @@ $(function() {
 
     //go and fetch tasks from Parse
     fetchTasks();
-    //window referes to the overall browser window
+
+    $('#rating').raty();
+
+    //window refers to the overall browser window
     window.setInterval(fetchTasks, 3000)
 });
