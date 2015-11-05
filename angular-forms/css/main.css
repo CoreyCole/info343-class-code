@@ -24,6 +24,19 @@ tfoot td {
     font-size: 0.8em;
 }
 
+.validation-error {
+    color: #DD0000;
+    font-size: 0.8em;
+}
+
+form .ng-dirty.ng-invalid {
+    border: 1px solid #DD0000;
+}
+
+form .ng-dirty.ng-valid {
+    border: 1px solid #00DD00;
+}
+
 @media (min-width: 768px) {
     body {
         font-size: 18px;
